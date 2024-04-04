@@ -1,0 +1,28 @@
+{"intents":[
+    {
+        "tag": "si",
+        "patterns": ["asi es", "si","somos clientes", "hace mucho tiempo hice una compra con ustedes","yo no, pero la empresa si les ha comprado antes","sii","sip"],
+        "responses": ["Perfecto, me puede confirmar los siguientes datos por favor?"]
+    },
+    {
+        "tag": "no",
+        "patterns": ["no", "es la primera vez que nos ponemos en contacto con ustedes","por el momento no, gracias","luego me pongo en contacto con ustedes, gracias","nop","nope"],
+        "responses": ["Gracias por considerar nuestros productos, le comento que por este medio no manejamos precios ni stock."]
+    },
+    {
+        "tag": "otro",
+        "patterns": ["si pero con otra empresa","si pero con otra razon social"],
+        "responses": ["Ambos estarian relacionados?"]
+    },
+    {
+        "tag": "cotizaciones",
+        "patterns": ["me puedes dar el precio de l1t", "ustedes nos pueden apoyar con un presupuesto de una empalmadora de fibra", " Buenas tardes, estoy buscando un kit FK-HOR-P, ¿lo tendran disponible?","vendes Cable Utp Cat 6e","Estoy interesado en cotizar un equipo OTDR. Quisiera ver si es posible que me compartan ficha técnica, costo y stock.","Me pueden enviar la cotizacion de 15 jumpers", "quiero comprar 20km de fibra","quiero comprar 25 jumpers","Buenas tardes, solicito una cotización","Buen dia quisiera realizar un pedido de material, acoplador roscado par monotubo de 40 mm","Precio de la empalmadora optronics por favor ","Cable cat5e, que costo tiene el de uso para exteriores, es 100% cobre","podrían ayudarme con cotización?","me pueden ayudar a cotizar el siguiente producto"],
+        "responses": ["En unos momentos le estaremos enviando la cotizacion al correo proporcionado"]
+    }
+
+
+
+
+]
+
+}

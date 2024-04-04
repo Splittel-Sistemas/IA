@@ -1,0 +1,66 @@
+{"intents":[
+ {
+        "tag": "saludos",
+        "patterns": ["buenos dias","buenas tardes","buenas noches","hola","hola que tal","que tal","buen dia, como estas"],
+        "responses": ["Hola! Soy Raul, con quien tengo el gusto?"]
+    },
+    {
+        "tag": "cotizaciones",
+        "patterns": ["me puedes dar el precio de l1t", "ustedes nos pueden apoyar con un presupuesto de una empalmadora de fibra", " estoy buscando un kit FK-HOR-P, ¿lo tendran disponible?","vendes Cable Utp Cat 6e","Estoy interesado en cotizar un equipo OTDR. Quisiera ver si es posible que me compartan ficha técnica, costo y stock.","Me pueden enviar la cotizacion de 15 jumpers", "quiero comprar 20km de fibra","quiero comprar 25 jumpers","Buenas tardes, solicito una cotización","quisiera realizar un pedido de material, acoplador roscado par monotubo de 40 mm","Precio de la empalmadora optronics por favor ","Cable cat5e, que costo tiene el de uso para exteriores, es 100% cobre","podrían ayudarme con cotización?","me pueden ayudar a cotizar el siguiente producto"],
+        "responses": ["Antes de continuar, ha comprado anteriormente con nosotros?"]
+    },
+{
+        "tag": "catalogo",
+        "patterns": [" estoy buscando un kit FK-HOR-P, ¿lo tendran disponible?","busco cajas de empalme","venden acoples para ducto","una consulta más, existen las bobinas de lanzamiento multimodo?", "estoy buscando bobinas de cable de red CAT6 color gris","seria tan amable de poder compartirme la ficha tecnica de la fibra óptica monomodo por favor?","Me pueden enviar el catalogo de fibras","me gustaría saber si cuenta con ductos galvanizados para tritubo","Que tipo de tubería es recomendada para instalación de fibra intemperie?","cuentan con conectores de fibra crimpeables?","estamos interesados en la compra de 5 gabinetes de pared de 12 ur","maneja rieles para servidor"],
+        "responses": ["Permitame revisar nuestro catalogo y enseguida se lo hago llegar."]
+    },
+    {
+        "tag": "informacion_cursos",
+        "patterns": ["que cursos ofrecen?", "tienen cursos de cableado estructurados", "cuando es el proximo curso de cableado estructurado", "cuando es la siguiente capacitacion de redes","estoy interesado en unas capacitaciones, me gustaria saber algunos detalles","gustaría saber las siguientes fechas para los cursos de fibra óptica de planta externa e interna.","Tienen curso virtuales", "Tienen cursos prensenciales en otra ciudad que no sea Queretaro?","solicite información del curso de fibra óptica"],
+        "responses": ["Permitame un momento, voy a revisar."]
+    },
+    {
+        "tag": "cursos_seminarios_constancias",
+        "patterns": ["me pueden enviar la constancia de un curso al que asisti", "me pueden enviar la constancia de un seminario al que asisti","me pueden enviar las constancias de los cursos a los que he asistido"],
+        "responses": ["Claro que si, por favor, me puede proporcionar el correo con el que se inscribio?"]
+    },
+    {
+        "tag": "facturacion",
+        "patterns": ["no encuentro mi factura", "me puedes enviar mi factura de compra","quiero la factura de una compra","como reviso mis facturas?"],
+        "responses": ["Necesito algunos datos para proceder con su solicitud."]
+    },
+    {
+        "tag": "problemas_acceso",
+        "patterns": ["no recuerdo mi usuario y contraseña", "no recuerdo mi contraseña","olvide mi usuario y contraseña para iniciar sesion","Me registré en su portal, pero no me llega info de correo y contraseña, ustedes me ayudan?","no puedo entrar al portal","tengo problemas para iniciar sesion","necesito resetear el password de mi cuenta con fibremex a quien recurro?"],
+        "responses": ["Me puede indicar cual es su nombre de facturacion, por favor."]
+    },
+    {
+        "tag": "servicios",
+        "patterns": ["me puede dar el contacto de mi asesor", "como me pongo en contacto con mi asesor?"],
+        "responses": ["Con todo gusto, permitame un momento por favor."]
+    },
+    {
+        "tag": "estatusPedido",
+        "patterns": ["para consultar el estatus de un pedido", "quiero conocer el estatus de mi pedido", "ya esta mi pedido en camino","en cuanto tiempo llegara mi pedido?"],
+        "responses": ["Permitame un momento por favor. "]
+    },
+    {
+        "tag": "badWords",
+        "patterns": ["chingada", "vete a la verga", "wey","pendejo", "no mames", "hija de la chingada"],
+        "responses": ["Esta haciendo uso de un vocabulario inadecuado, le daremos fin a este chat."]
+    },
+    {
+        "tag": "puntos_ventas_envios",
+        "patterns": ["Tienen tienda fisica?","Tienen punto de venta en Ciudad de México?","tienen distribuidores en ciudad de mexico","hacen envios a otro pais?","tienen ddistribuidores en peru?","tienen distribuidores en colombia?","Hacen envios a otros estados?","Envian a otros paises?"],
+        "responses": ["En un momento le brindo la informacion, permitame porfavor."]
+    },
+    {
+        "tag": "final",
+        "patterns": ["no", "eso es todo por el momento","es todo muchas gracias","no muchas gracias", "eso seria todo por ahora", "solo eso","solo eso, espero una pronta respuesta de un ejecutivo"],
+        "responses": ["Ha sido un gusto atenderlo, que tenga un excelente dia!"]
+    }
+
+
+]
+
+}
