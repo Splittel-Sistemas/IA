@@ -33,7 +33,7 @@ def get_data():
         return jsonify({"data": results[0]})
 
     finally:
-        # Cerrar el cursor y la conexión
+        # Cerrar el cursor y la conexion
         cursor.close()
         connection.close()
 
