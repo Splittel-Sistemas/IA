@@ -52,7 +52,7 @@ def verificar_token():
         if token == sett.token:
             return request.args.get('hub.challenge'), 200
         else:
-            return 'token incorrecto-test', 200
+            return 'token incorrecto', 200
     except Exception as e:
         return e, 403
 
