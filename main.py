@@ -84,7 +84,7 @@ def recibir_mensajes():
 
 
 if __name__ == '__main__':
-    # Debug
+    #- Debug
     app.run(debug=True, port=5000)
      # Production
     #http_server = WSGIServer(('', 443), app)
