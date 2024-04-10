@@ -2,9 +2,6 @@ import requests
 import sett
 import json
 import time
-#import pickle
-
-#words = pickle.load(open('words.pkl', 'rb'))
 
 
 def obtener_Mensaje_whatsapp(message):
@@ -149,6 +146,55 @@ def document_Message(number, url, caption, filename):
     )
     return data
 
+def send_contact(number, name, lastName, phoneNumber, email_):
+    data = json.dumps(
+        {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "contacts",
+            "contacts": [{
+                "emails": [{
+                    "email": email_
+                }],
+                "name": {
+                    "formatted_name": name + " " + lastName,
+                    "first_name": name,
+                    "last_name": lastName
+                },
+                #"org": {
+                 #   "company": "Splittel"
+                #},
+                "phones":[{
+                    "phone": phoneNumber,
+                    #"wa-id": "+52" + phoneNumber,
+                    "type": "Móvil"
+                }
+                ]
+            }
+            ]
+            
+        }
+    )
+    return data
+
+def send_location(number, longitude, latitude, name, address_):
+    data = json.dumps(
+        {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "location",
+            "location": {
+                "longitude": longitude,
+                "latitude": latitude,
+                "name": name,
+                "address": address_,
+            }
+        }
+    )
+    return data
+
 def sticker_Message(number, sticker_id):
     data = json.dumps(
         {
@@ -215,84 +261,74 @@ def markRead_Message(messageId):
     )
     return data
 
-def administrar_chatbot(text,number, messageId, name):
-    text = text.lower() #mensaje que envio el usuario
+def administrar_chatbot(text,number, messageId, name,acciones):
+    #text = text.lower() #mensaje que envio el usuario
     list = []
     print("mensaje del usuario: ",text)
 
     markRead = markRead_Message(messageId)
     list.append(markRead)
-    time.sleep(2)
+    #time.sleep(1)
 
-    #aca irian las opciones
-    
+    #data = text_Message(number, text)
+    #print(len(text))
 
-      
-    if "hola" in text:
-      body = "¡Hola! 👋 Soy Raul. ¿Con quien tengo el gusto?"
-      data = text_Message(number, body)
-      list.append(data)
+
+
+    if acciones == "enviarCatalogo":
+
+        #url = "C:/Users/Maritza González/PruebasMaritza/chatbot/chatbot_Raul/hatsapp_api"
+        #url = "CatalogoTelecomunicacionesFibremex.pdf"
+        #url = "https://publicaciones.fibremex.com/catalogo-telecomunicaciones-fibremex.pdf"
+        url = "https://optronics.com.mx/conectividad/public/file/enciclopedia/folleto/Folleto%20Cables%20ADSS%20-%20Optronics.pdf"
+        #url = "http://catarina.udlap.mx/u_dl_a/tales/documentos/lem/ledesma_e_ro/capitulo1.pdf"
+        caption = "Catalogo Fibremex 2024"
+        filename = "catalogoFibremex.pdf"
+        data_catalogo = document_Message(number, url, caption, filename)
+    elif acciones == "enviarContacto":
+        name = "Miguel"
+        lastName = "Rosiles"
+        phoneNumber = "+524421418496"
+        email_ = "miguelrosiles@splittel.com"
+        data_contacto = send_contact(number, name, lastName, phoneNumber, email_)
+
+    elif acciones == "reaccionSaludo":
+        replyReaction = replyReaction_Message(number, messageId, "👍")
+        list.append(replyReaction)
+
+    elif acciones =="enviarUbicacion":
+        latitude = 20.555108134187922
+        longitude = -100.27050119186629
+        name = "Fibremex SA de CV"
+        address_ = "Parque Tecnológico Innovación Querétaro Lateral de la carretera Estatal 431, km.2+200, Int.28, 76246 Santiago de Querétaro, Querétaro, México."
+        data_ubicaciones = send_location(number, longitude, latitude, name, address_)
         
-        
-    elif "servicios" in text:
-        body = "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?"
-        footer = "Grupo Splittel"
-        options = ["Analítica Avanzada", "Migración Cloud", "Inteligencia de Negocio"]
-
-        listReplyData = listReply_Message(number, options, body, footer, "sed2",messageId)
-        sticker = sticker_Message(number, get_media_id("perro_traje", "sticker"))
-
-        list.append(listReplyData)
-        list.append(sticker)
-    elif "inteligencia de negocio" in text:
-        body = "Buenísima elección. ¿Te gustaría que te enviara un documento PDF con una introducción a nuestros métodos de Inteligencia de Negocio?"
-        footer = "Grupo Splittel"
-        options = ["✅ Sí, envía el PDF.", "⛔ No, gracias"]
-
-        replyButtonData = buttonReply_Message(number, options, body, footer, "sed3",messageId)
-        list.append(replyButtonData)
-    elif "sí, envía el pdf" in text:
-        sticker = sticker_Message(number, get_media_id("pelfet", "sticker"))
-        textMessage = text_Message(number,"Genial, por favor espera un momento.")
-
-        enviar_Mensaje_whatsapp(sticker)
-        enviar_Mensaje_whatsapp(textMessage)
-        time.sleep(3)
-
-        document = document_Message(number, sett.document_url, "Listo 👍🏻", "Inteligencia de Negocio.pdf")
-        enviar_Mensaje_whatsapp(document)
-        time.sleep(3)
-
-        body = "¿Te gustaría programar una reunión con uno de nuestros especialistas para discutir estos servicios más a fondo?"
-        footer = "Grupo Splittel"
-        options = ["✅ Sí, agenda reunión", "No, gracias." ]
-
-        replyButtonData = buttonReply_Message(number, options, body, footer, "sed4",messageId)
-        list.append(replyButtonData)
-    elif "sí, agenda reunión" in text :
-        body = "Estupendo. Por favor, selecciona una fecha y hora para la reunión:"
-        footer = "Grupo Splittel"
-        options = ["📅 10: mañana 10:00 AM", "📅 7 de junio, 2:00 PM", "📅 8 de junio, 4:00 PM"]
-
-        listReply = listReply_Message(number, options, body, footer, "sed5",messageId)
-        list.append(listReply)
-    elif "7 de junio, 2:00 pm" in text:
-        body = "Excelente, has seleccionado la reunión para el 7 de junio a las 2:00 PM. Te enviaré un recordatorio un día antes. ¿Necesitas ayuda con algo más hoy?"
-        footer = "Grupo Splittel"
-        options = ["✅ Sí, por favor", "❌ No, gracias."]
 
 
-        buttonReply = buttonReply_Message(number, options, body, footer, "sed6",messageId)
-        list.append(buttonReply)
-    elif "no, gracias." in text:
-        textMessage = text_Message(number,"Perfecto! No dudes en contactarnos si tienes más preguntas. Recuerda que también ofrecemos material gratuito para la comunidad. ¡Hasta luego! 😊")
-        list.append(textMessage)
-    else :
-        data = text_Message(number,"Lo siento, no entendí lo que dijiste. ¿Quieres que te ayude con alguna de estas opciones?")
+    sleep_ = 1
+    for mensaje in text:
+        if mensaje == "Le compartimos nuestro catalogo digital." and acciones == "enviarCatalogo":
+            #print("entro")
+            list.append(data_catalogo)
+            sleep_ = 2
+            #print(data_catalogo)
+        elif mensaje == "En un momento su ejecutivo de ventas se pondrá en contacto con usted para atenderlo." and acciones == "enviarContacto":
+            list.append(data_contacto)
+            #sleep_ = 1
+
+        elif mensaje == "Parque Tecnológico Innovación Querétaro, Lateral de la carretera Estatal 431, km.2+200, Int.28, C.P.76246" and acciones == "enviarUbicacion":
+            list.append(data_ubicaciones)
+            sleep_ = 1
+
+        data = text_Message(number, mensaje)
         list.append(data)
 
+        
+        
+    
     for item in list:
         enviar_Mensaje_whatsapp(item)
+        time.sleep(sleep_)
       
     return 
 

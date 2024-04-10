@@ -32,7 +32,7 @@
     {
         "tag": "problemas_acceso",
         "patterns": ["no recuerdo mi usuario y contraseña", "no recuerdo mi contraseña","olvide mi usuario y contraseña para iniciar sesion","Me registré en su portal, pero no me llega info de correo y contraseña, ustedes me ayudan?","no puedo entrar al portal","tengo problemas para iniciar sesion","necesito resetear el password de mi cuenta con fibremex a quien recurro?"],
-        "responses": ["Me puede indicar cual es su nombre de facturacion, por favor."]
+        "responses": ["Me puede indicar cual es su RFC, por favor."]
     },
     {
         "tag": "servicios",
@@ -50,10 +50,16 @@
         "responses": ["Esta haciendo uso de un vocabulario inadecuado, le daremos fin a este chat."]
     },
     {
+        "tag": "informacion_perdida",
+        "patterns": ["me comentaron que me iba hacer llegar un correo y estoy en espera", "Solicite una cotizacion y aun no me envian la informacion", "quedaron de ponerse en contacto conmigo y aun no lo hacen","Pedi información por correo y aun no me la hacen llegar"],
+        "responses": ["Puede revisar su bandeja de SPAM por favor."]
+    },
+	{
         "tag": "puntos_ventas_envios",
         "patterns": ["Tienen tienda fisica?","Tienen punto de venta en Ciudad de México?","tienen distribuidores en ciudad de mexico","hacen envios a otro pais?","tienen ddistribuidores en peru?","tienen distribuidores en colombia?","Hacen envios a otros estados?","Envian a otros paises?"],
-        "responses": ["En un momento le brindo la informacion, permitame porfavor."]
+        "responses": ["En un momento le brindo la informacion, permitame por favor."]
     },
+
     {
         "tag": "final",
         "patterns": ["no", "eso es todo por el momento","es todo muchas gracias","no muchas gracias", "eso seria todo por ahora", "solo eso","solo eso, espero una pronta respuesta de un ejecutivo"],
